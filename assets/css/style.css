@@ -359,6 +359,11 @@ html, body {
 }
 
 /* Section: Portfolio */
+table {
+    border-spacing: 6px;
+    border-collapse: separate;
+}
+
 .section-portfolio {
     padding-bottom: 120px;
 }
