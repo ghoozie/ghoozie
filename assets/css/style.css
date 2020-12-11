@@ -593,3 +593,10 @@ a.icon-up-bg:hover {color: #212121;}
     color: #fff;
     text-align: center;
 }
+
+@media only screen and (max-width: 1200px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 50%;
+  }
+}
