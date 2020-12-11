@@ -240,6 +240,7 @@ html, body {
     bottom: 0;
 }
 
+
 .hero h1 {
     font-size: 46px;
     font-weight: 700;
@@ -593,17 +594,4 @@ a.icon-up-bg:hover {color: #212121;}
     text-align: center;
 }
 
-/*@media only screen and (max-width: 900px) {*/
-  /* For mobile phones: */
-/*  [class*="col-md-6"] {
-    width: 50%;
-  }
 
-  .hero .col-md-6:last-child {
-      position: absolute;
-      top: 55%;
-      right: 50%;
-      bottom: 0;
-  }
-}
-*/
