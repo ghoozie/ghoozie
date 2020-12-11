@@ -87,7 +87,7 @@ h4 {
 }
 
 .btn-border {
-    background-color: transparent;
+    background-color: #fefefe;
     color: #212121;
     border: 1px solid #212121; 
 }
@@ -211,7 +211,7 @@ html, body {
 /* HERO
 ================================================== */
 .hero { 
-    background: url(../img/hero.jpg) no-repeat center / cover; 
+    background: url(../img/hero2.jpg) no-repeat center / cover;
     height: 100%;
     width: 100%;
     min-height: 700px;
@@ -236,6 +236,7 @@ html, body {
 
 .hero .col-md-6:last-child {
     position: absolute;
+    top: 15%;
     right: 0;
     bottom: 0;
 }
@@ -247,10 +248,16 @@ html, body {
     text-transform: uppercase;
 }
 
+.main-name {
+    -webkit-text-stroke: 1.25px #eee;
+}
+
 .job-title {
     font-size: 22px;
     margin-bottom: 30px;
     line-height: 1;
+    color: black;
+    text-shadow: -1px 0 #eee, 0 1px #eee, 1px 0 #eee, 0 -1px #eee;
 } 
 
 .hero img {
