@@ -236,7 +236,6 @@ html, body {
 
 .hero .col-md-6:last-child {
     position: absolute;
-    top: 15%;
     right: 0;
     bottom: 0;
 }
@@ -594,9 +593,9 @@ a.icon-up-bg:hover {color: #212121;}
     text-align: center;
 }
 
-@media only screen and (max-width: 900px) {
+/*@media only screen and (max-width: 900px) {*/
   /* For mobile phones: */
-  [class*="col-md-6"] {
+/*  [class*="col-md-6"] {
     width: 50%;
   }
 
@@ -607,3 +606,4 @@ a.icon-up-bg:hover {color: #212121;}
       bottom: 0;
   }
 }
+*/
