@@ -91,14 +91,16 @@
             <div class="row">
 
                 <div class="col-md-6 ghoozie-text-bg" style="text-align:center;margin-top:30px;">
-                    <h1 class="main-name">Oliver Terrell</h1>
+                    <h1 class="main-name" onclick="goReact()">Oliver Terrell</h1>
                     <div class="page-scroll">
-                        <p class="job-title">Software Developer/Co-Founder of Greenstar Group</p>
+                        <p class="job-title">Software Engineer/Co-Founder of Greenstar Group</p>
                         <a href="#contact" class="btn btn-border">Contact Me</a>
                         <div class="clearfix visible-xxs"></div>
                         <a href="https://ghoozie.tk/oliver_resume.pdf" class="btn btn-fill" target="_blank">View Resumé</a>
                         <div class="clearfix visible-xxs"></div>
                         <a href="https://www.linkedin.com/in/oliver-terrell/" class="btn btn-primary" target="_blank">LinkedIn</a>
+                        <br><br>
+                        <div onclick="goReact()"> () => {this.React()} </div>
                     </div>
                 </div>
             
@@ -547,6 +549,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
     <script src="assets/js/jquery.countTo.min.js"></script>
     <script src="assets/js/script.js"></script>
+
+    <script>
+        function goReact() {
+            var loca = window.location.href;
+            if (loca.slice(-2) === '/#') {loca = loca.slice(0, loca.length - 1);}
+            window.location.replace(loca+'react/Rindex.html');
+        }
+    </script>
   
 </body>
 </html>
