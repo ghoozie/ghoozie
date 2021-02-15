@@ -1,5 +1,5 @@
 @font-face {
-    font-family: DejaVu Sans Mono;
+    font-family: DejaVu Sans Mono, "Courier New", Courier, monospace;
     src: url(https://github.com/dejavu-fonts/dejavu-fonts);
 }
 
@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 } */
 
 .header-container {
-    font-family: DejaVu Sans Mono;
+    font-family: DejaVu Sans Mono, "Courier New", Courier, monospace;
     width: 100vw;
     position: absolute;
     margin-left: auto;
@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-container :only-child {
-    font-family: DejaVu Sans Mono;
+    font-family: DejaVu Sans Mono, "Courier New", Courier, monospace;
     position: relative;
     margin: auto;
 }

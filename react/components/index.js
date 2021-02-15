@@ -34,6 +34,7 @@ function Ghoozie() {
         <Header />
         <Projects />
         <Skills />
+        <States />
     </>);
 }
 

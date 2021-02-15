@@ -2,7 +2,7 @@
 
 
 const rString = "Fun With States!";
-// const [count, setCount] = ;
+const [count, setCount] = React.useState(0);
 
 
 function statesIncrement() {
@@ -12,7 +12,7 @@ function statesIncrement() {
 function States() {
     return(<>
         <div id="states-container" onClick={() => statesIncrement()}>
-            <h2 style={{color:'white'}}>{count}</h2>
+            <h2 style={{color:'black'}}>{count}</h2>
         </div>
 
         <LineBreak />
