@@ -1,2 +1,2 @@
 # Portfolio
-This is my portfolio page, hosted on https://ghoozie.tk
+This is my page
