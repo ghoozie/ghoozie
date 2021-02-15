@@ -5,8 +5,8 @@ function LineBreak() {
 }
 
 
-function mprint(name,log) {
-    console.log(name + ":");
+function mprint(label,log) {
+    console.log(label + ":");
     console.log(log);
 }
 

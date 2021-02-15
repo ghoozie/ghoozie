@@ -10,7 +10,7 @@ function SkillsList() {
 function Skills() {
     return(<>
         <div id="skills-header-container">
-            <h2 onClick={() => showHide('skills-list-container')}>Highlighted Skills</h2>
+            <h2 onClick={() => $('#skills-list-container').toggle()}>Highlighted Skills</h2>
         </div>
 
         <SkillsList />

@@ -19,7 +19,7 @@ function Header() {
     return(<>
         <div id="header-container">
             <div id="backbutton" style={{position:'absolute',top:'95%',left:'95%'}}><a href={bootstrap}>{dirtyWings}</a></div>
-            <h1 onClick={() => showHide('subheader-container')}>Oliver Terrell (/ghoozie)</h1>
+            <h1 onClick={() => $('#subheader-container').toggle()}>Oliver Terrell (/ghoozie)</h1>
         </div>
 
         <SubHeader />
