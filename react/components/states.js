@@ -23,9 +23,10 @@ function States(props) {
         if (rString.length == fun.length) {
             $('#states-box').toggle();
         } else {
+        if (count > 1) {
             setCount(count - 1);
             setRString(fun.slice(0, count));
-        }
+        }}
     }
 
     return(<>
