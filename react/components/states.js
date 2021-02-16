@@ -8,11 +8,11 @@ function States(props) {
     var fLength = props.fLength
 
     function prog() {
-        setCount(count + 1);
-        setRString(fun.slice(0, count));
-
         if (rString.length == fLength) {
             $('#states-box').toggle();
+        } else {
+            setCount(count + 1);
+            setRString(fun.slice(0, count));
         }
     }
 
