@@ -1,17 +1,9 @@
-// TODO: add webpack to allow for imports of useState needed for hooks
 
+function States(props) {
+    var count = props.count;
 
-const rString = "Fun With States!";
-const [count, setCount] = React.useState(0);
-
-
-function statesIncrement() {
-    setCount(count + 1);
-}
-
-function States() {
     return(<>
-        <div id="states-container" onClick={() => statesIncrement()}>
+        <div id="states-container" onClick={() => props.inc()}>
             <h2 style={{color:'black'}}>{count}</h2>
         </div>
 
