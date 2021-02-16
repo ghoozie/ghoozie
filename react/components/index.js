@@ -30,18 +30,16 @@ function Header() {
 
 
 function Ghoozie() {
-    const rString = "Fun With States!";
-    const [count, setCount] = React.useState(0);
-
-    function inc() {
-        setCount(count + 1);
-    }
+    const [rString, setRString] = React.useState("Click me");
+    const [count, setCount] = React.useState(1);
+    const fun = "Fun With States!";
 
     return(<>
         <Header />
         <Projects />
         <Skills />
-        <States count={count} setCount={setCount} inc={inc} />
+        <States rString={rString} setRString={setRString} count={count} setCount={setCount}
+                fun={fun} fLength={fun.length} />
     </>);
 }
 
