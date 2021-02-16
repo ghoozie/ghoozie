@@ -30,8 +30,8 @@ function Header() {
 
 
 function Ghoozie() {
-    const [rString, setRString] = React.useState("Click me");
-    const [count, setCount] = React.useState(1);
+    const [rString, setRString] = React.useState("F");
+    const [count, setCount] = React.useState(2);
     const fun = "Fun With States!";
 
     return(<>
