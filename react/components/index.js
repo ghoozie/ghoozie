@@ -38,8 +38,7 @@ function Ghoozie() {
         <Header />
         <Projects />
         <Skills />
-        <States rString={rString} setRString={setRString} count={count} setCount={setCount}
-                fun={fun} />
+        <States rString={rString} setRString={setRString} fun={fun} />
     </>);
 }
 

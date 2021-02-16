@@ -2,8 +2,6 @@
 function States(props) {
     var rString = props.rString;
     var setRString = props.setRString;
-    var count = props.count;
-    var setCount = props.setCount;
     var fun = props.fun;
 
     function prog() {
@@ -14,8 +12,7 @@ function States(props) {
                 document.title = 'ghoozie';
             }
         } else {
-            setCount(count + 1);
-            setRString(fun.slice(0, count));
+            setRString(fun.slice(0, rString.length + 1));
         }
     }
 
@@ -23,10 +20,10 @@ function States(props) {
         if (rString.length == fun.length) {
             $('#states-box').toggle();
         } else {
-        if (count > 1) {
-            setCount(count - 1);
-            setRString(fun.slice(0, count));
-        }}
+            if (rString.length > 1) {
+                setRString(fun.slice(0, rString.length - 1));
+            }
+        }
     }
 
     return(<>
