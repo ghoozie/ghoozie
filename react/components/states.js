@@ -8,16 +8,21 @@ function States(props) {
     var fLength = props.fLength
 
     function prog() {
+        setCount(count + 1);
+        setRString(fun.slice(0, count));
+    }
+
+    function mShow() {
         if (rString.length == fLength) {
             $('#states-box').toggle();
         } else {
-            setCount(count + 1);
+            setCount(count - 1);
             setRString(fun.slice(0, count));
         }
     }
 
     return(<>
-        <div id="states-container" style={{width:'100%'}} onClick={() => prog()}>
+        <div id="states-container" style={{width:'100%'}} onMouseOver={() => prog()} onClick={() => mShow()}>
             <h2 style={{color:'black'}}>{rString}</h2>
         </div>
         <div id="states-box" style={{display:'none'}}>
