@@ -5,15 +5,22 @@ function States(props) {
     var count = props.count;
     var setCount = props.setCount;
     var fun = props.fun;
-    var fLength = props.fLength
 
     function prog() {
-        setCount(count + 1);
-        setRString(fun.slice(0, count));
+        if (rString.length == fun.length) {
+            if (document.title == 'ghoozie') {
+                document.title = 'ghoozie WRLD';
+            } else {
+                document.title = 'ghoozie';
+            }
+        } else {
+            setCount(count + 1);
+            setRString(fun.slice(0, count));
+        }
     }
 
     function mShow() {
-        if (rString.length == fLength) {
+        if (rString.length == fun.length) {
             $('#states-box').toggle();
         } else {
             setCount(count - 1);

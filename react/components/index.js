@@ -39,7 +39,7 @@ function Ghoozie() {
         <Projects />
         <Skills />
         <States rString={rString} setRString={setRString} count={count} setCount={setCount}
-                fun={fun} fLength={fun.length} />
+                fun={fun} />
     </>);
 }
 
