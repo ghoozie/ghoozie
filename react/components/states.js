@@ -5,12 +5,10 @@ function States(props) {
     var fun = props.fun;
 
     function prog() {
-        if (rString.length == fun.length) {
-            if (document.title == 'ghoozie') {
+        if ((rString.length == fun.length) || (document.title == 'ghoozie')) {
                 document.title = 'ghoozie WRLD';
-            } else {
-                document.title = 'ghoozie';
-            }
+        } else if (rString.length == fun.length) {
+            document.title = 'ghoozie';
         } else {
             setRString(fun.slice(0, rString.length + 1));
         }
@@ -19,10 +17,8 @@ function States(props) {
     function mShow() {
         if (rString.length == fun.length) {
             $('#states-box').toggle();
-        } else {
-            if (rString.length > 1) {
+        } else if (rString.length > 1) {
                 setRString(fun.slice(0, rString.length - 1));
-            }
         }
     }
 
