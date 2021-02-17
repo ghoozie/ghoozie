@@ -5,10 +5,12 @@ function States(props) {
     var fun = props.fun;
 
     function prog() {
-        if ((rString.length == fun.length) || (document.title == 'ghoozie')) {
+        if (rString.length == fun.length) {
+            if (document.title == 'ghoozie') {
                 document.title = 'ghoozie WRLD';
-        } else if (rString.length == fun.length) {
-            document.title = 'ghoozie';
+            } else {
+                document.title = 'ghoozie';
+            }
         } else {
             setRString(fun.slice(0, rString.length + 1));
         }
