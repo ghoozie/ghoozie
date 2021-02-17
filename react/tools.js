@@ -1,17 +1,15 @@
-function goReact() {
-    var loca = window.location.href;
-    if (loca.includes('localhost')) {
-        window.location.replace(loca.slice(0,23) + 'react/Rindex.html');
-    } else {
-        window.location.replace('https://ghoozie.tk/react/Rindex.html');
-    }
-}
-
-
 // I never go anywhere without my trusty mprint
 function mprint(label,log) {
     console.log(label + ":");
     console.log(log);
+}
+
+
+// For if I want to play with more fun section separators later
+function LineBreak() {
+    return(<>
+        <hr />
+    </>);
 }
 
 
@@ -23,12 +21,4 @@ function showHide(elem) {
     } else {
         brick.style.display = "none";
     }
-}
-
-
-// For if I want to play with more fun section separators later
-function LineBreak() {
-    return(<>
-        <hr />
-    </>);
 }

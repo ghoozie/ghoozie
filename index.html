@@ -51,9 +51,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Custom JS -->
-    <script src="react/tools.js"></script>
-
 </head>
 <body>
 
@@ -552,6 +549,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
     <script src="assets/js/jquery.countTo.min.js"></script>
     <script src="assets/js/script.js"></script>
+    
+    <script>
+        function goReact() {
+            var loca = window.location.href;
+            if (loca.includes('localhost')) {
+                window.location.replace(loca.slice(0,23) + 'react/Rindex.html');
+            } else {
+                window.location.replace('https://ghoozie.tk/react/Rindex.html');
+            }
+        }
+    </script>
   
 </body>
 </html>
