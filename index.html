@@ -553,8 +553,11 @@
     <script>
         function goReact() {
             var loca = window.location.href;
-            if (loca.slice(-2) === '/#') {loca = loca.slice(0, loca.length - 1);}
-            window.location.replace(loca+'react/Rindex.html');
+            if (loca.includes('localhost')) {
+                window.location.replace(loca.slice(0,23) + 'react/Rindex.html');
+            } else {
+                window.location.replace('https://ghoozie.tk/react/Rindex.html');
+            }
         }
     </script>
   
