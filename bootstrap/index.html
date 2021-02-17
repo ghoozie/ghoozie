@@ -91,7 +91,7 @@
             <div class="row">
 
                 <div class="col-md-6 ghoozie-text-bg" style="text-align:center;margin-top:30px;">
-                    <h1 class="main-name" onclick="goReact()">Oliver Terrell</h1>
+                    <h1 class="main-name" onclick="goPhantom()">Oliver Terrell</h1>
                     <div class="page-scroll">
                         <p class="job-title">Software Engineer/Co-Founder of Greenstar Group</p>
                         <a href="#contact" class="btn btn-border">Contact Me</a>
@@ -560,6 +560,17 @@
             }
         }
     </script>
-  
+    <script>
+        function goPhantom() {
+            var loca = window.location.href;
+            if (loca.includes('localhost')) {
+                window.location.assign(loca.slice(0,22) + 'phantom/index.html');
+            } else {
+                window.location.assign('https://ghoozie.tk/phantom/index.html');
+            }
+        }
+    </script>
+
+
 </body>
 </html>
