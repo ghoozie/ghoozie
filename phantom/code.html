@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Oliver Terrell - Code Samples</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon.ico">
+		<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon.ico">
+
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="../assets/img/favicon.ico" alt="" /></span><span class="title">Home</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="aboutme.html">About Me</a></li>
+							<li><a href="code.html">Code Samples</a></li>
+							<li><a href="projects.html">Projects</a></li>
+							<li><a href="#" onclick='window.open("https://linkedin.com/in/oliver-terrell");return false;'>LinkedIn&reg;</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Code Samples</h1>
+							<p>Here are a few general tools and small libraries I made from scratch, and continue to use across projects. If you like what you see feel free to use them yourself!</p>
+		<!-- TOOLS -->
+							<h2>Tools</h2>
+			<!-- mprint -->
+							<table class="alt">
+								<thead>
+									<tr><th style="vertical-align: middle;"><h3><code>mprint()</code></h3></th>
+									<td colspan="2"><blockquote><sup>This is one of my all-time favorites due to its simplicity and how much it actually helps in debugging.<br>I pronounce it <emph>"imprint"</emph> or simply <emph>"mmm-print" because it is so delicious.</emph></sup></blockquote></td></tr>
+									<tr>
+										<th>Language</th>
+										<th>Code</th>
+										<th>Output to Console</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Python</td>
+										<td><pre><code>def mprint(label, log):
+&emsp; print(label, ':\n', log, '\n', flush=True)</code></pre></td>
+										<td><pre><code>label:
+whatever you want to see</code></pre></td>
+									</tr>
+									<tr>
+										<td>JavaScript</td>
+										<td><pre><code>function mprint(label, log) {
+&emsp; console.log(label + ':');
+&emsp; console.log(log);
+}</code></pre></td>
+										<td><pre><code>label:
+whatever you want to see</code></pre></td>
+									</tr>
+									<tr>
+										<td>PHP</td>
+										<td><pre><code>function mprint($label, $log) {
+&emsp; echo $label.':\r\n'.$log.'\r\n';
+}</code></pre></td>
+										<td><pre><code>label:
+whatever you want to see</code></pre></td>
+									</tr>
+								</tbody>
+							</table>
+		<!-- /mprint -->
+
+	<!-- /TOOLS -->
+
+
+	<!-- LIBRARIES -->
+
+							<br><br>
+						<h2>Libraries</h2>	
+		<!-- SQL library -->
+				<table class="alt">
+					<thead>
+						<tr><th style="vertical-align: middle;"><h3><code>SQL</code></h3></th>
+						<td><blockquote><sup>Here is a library I wrote in PHP to assist in SQL querying. Allows you to easily use select, insert, and update queries to a database. All queries are run through a sanitization method to protect against SQL injections. $eq_dict is a dictionary of equivalent terms for selecting. $insert_dict is a dictionary that passes the dict value into the database at the column associated with the key.</sup></blockquote></td></tr>
+						<tr>
+							<th colspan="2">Custom SQL Querying Library in PHP</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2"><pre><code><strong>/* Database connection settings */</strong>
+$host = "db.host.ip.address";
+$user = "database username";
+$pass = "database password";
+$db = "schema name";
+$mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
+		
+
+<strong>/* Writes to stderr. Included periodically below to show feedback on what's happening with your database */</strong>
+function console_log($message) {
+&emsp; &emsp; $STDERR = fopen("php://stderr", "w");
+&emsp; &emsp; fwrite($STDERR, "\n".$message."\n\n");
+&emsp; &emsp; fclose($STDERR);
+}
+
+<strong>/* All queries are passed though here for error reporting to console */</strong>
+function safe_query($mysqli, $query_string) {
+&emsp; &emsp; $result = $mysqli -> query($query_string);
+&emsp; &emsp; if(! empty( $mysqli->error ) ){
+&emsp; &emsp; &emsp; &emsp; console_log($query_string);
+&emsp; &emsp; &emsp; &emsp; console_log($mysqli->error);
+&emsp; &emsp; }
+&emsp; &emsp; return $result;
+}
+
+<strong>/* Writes the conjunction for multiple equalities while handling null and empty cases */</strong>
+function make_equality_string($eq_dict, $conj=' and ') {
+&emsp; &emsp; $keys = array_keys($eq_dict);
+&emsp; &emsp; $equality_string = '';
+&emsp; &emsp; foreach($keys as $key) {
+&emsp; &emsp; &emsp; &emsp; if ($equality_string == '') {
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; $conjunction = '';
+&emsp; &emsp; &emsp; &emsp; } else {
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; $conjunction = $conj;
+&emsp; &emsp; &emsp; &emsp; }
+&emsp; &emsp; &emsp; &emsp; if ($eq_dict[$key] == null) {
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; $equality_string = $equality_string.$conjunction.$key." IS null ";
+&emsp; &emsp; &emsp; &emsp; } else {
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; $equality_string = $equality_string.$conjunction.$key." = '".$eq_dict[$key]."'";
+&emsp; &emsp; &emsp; &emsp; }
+&emsp; &emsp; }
+&emsp; &emsp; return $equality_string;
+}
+
+<strong>/* This function sanitizes input to protect your database from SQL injections */</strong>
+function dict_sanitize($mysqli, $dict) {
+&emsp; &emsp; foreach ($dict as $key => $element) {
+&emsp; &emsp; &emsp; &emsp; $element = $mysqli->escape_string($element);
+&emsp; &emsp; &emsp; &emsp; $element = addcslashes($element, '%_');
+&emsp; &emsp; &emsp; &emsp; $dict[$key] = $element;
+&emsp; &emsp; }
+&emsp; &emsp; return $dict;
+}
+
+<strong>/* Takes a table name and returns all rows that match $eq_dict */</strong>
+function select_query($mysqli, $table_name, $eq_dict, $desc_field=Null) {
+&emsp; &emsp; # make the query
+&emsp; &emsp; $eq_dict = dict_sanitize($mysqli, $eq_dict);
+
+&emsp; &emsp; $equality_string = make_equality_string($eq_dict);
+&emsp; &emsp; $qp1 = "select * from ".$table_name." where ".$equality_string;
+&emsp; &emsp; $qp2 = ";";
+
+&emsp; &emsp; if ($desc_field != NULL) {
+&emsp; &emsp; &emsp; &emsp; $qp2 = " ORDER BY ".$desc_field." DESC;";
+&emsp; &emsp; }
+
+&emsp; &emsp; $query = $qp1.$qp2;
+
+&emsp; &emsp; $output = safe_query($mysqli, $query);
+&emsp; &emsp; console_log($query);
+&emsp; &emsp; console_log("Select Query Executed --> Num rows: ".$output->num_rows);
+&emsp; &emsp; return $output;
+}
+
+<strong><i>/* Select Query Examples:
+------------------------------------------------------------------------------------------------------------------
+
+&emsp; $eq_dict['id'] = 42;
+
+&emsp; $user42 = select_query($mysqli, 'users', $eq_dict);
+
+&emsp; &emsp; -> returns all rows in 'users' table where column 'id' = 42
+&emsp; &emsp; &emsp; &ensp; and sets equal to $user42 variable
+
+------------------------------------------------------------------------------------------------------------------
+
+&emsp; $eq_dict['level'] = 5;
+&emsp; $eq_dict['admin'] = 'Y';
+&emsp; $eq_dict['date_archived'] = null;
+
+&emsp; $active_l_five_admins = select_query($mysqli, 'users', $eq_dict);
+
+&emsp; &emsp; -> returns all rows in 'users' table where entries are level 5 admins who have not been archived
+&emsp; &emsp; &emsp; &ensp; and sets equal to $active_l_five_admins variable
+
+------------------------------------------------------------------------------------------------------------------
+
+*/</i></strong>
+
+
+function insert_query($mysqli, $table_name, $insert_dict) {
+&emsp; &emsp; $insert_dict = dict_sanitize($mysqli, $insert_dict);
+
+&emsp; &emsp; $fields = array_keys($insert_dict);
+&emsp; &emsp; $values = $insert_dict;
+&emsp; &emsp; $f_string = implode(", ", $fields);
+&emsp; &emsp; $v_string = '';
+
+&emsp; &emsp; foreach ($values as $value) {
+&emsp; &emsp; &emsp; &emsp; if ($value == null) {
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; $v_string = $v_string." null,";
+&emsp; &emsp; &emsp; &emsp; } else {
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; $v_string = $v_string."'".$value."',";
+&emsp; &emsp; &emsp; &emsp; }
+&emsp; &emsp; }
+
+&emsp; &emsp; $v_string = rtrim($v_string, ',);');
+
+&emsp; &emsp; $query = "insert into ".$table_name." (".$f_string.") VALUES (".$v_string.");";
+&emsp; &emsp; console_log($query);
+&emsp; &emsp; return safe_query($mysqli, $query);
+}
+
+
+function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
+&emsp; &emsp; $eq_dict = dict_sanitize($mysqli, $eq_dict);
+&emsp; &emsp; $change_dict = dict_sanitize($mysqli, $change_dict);
+
+&emsp; &emsp; $equality_string = make_equality_string($eq_dict);
+&emsp; &emsp; $change_string = make_equality_string($change_dict, $conj=', ');
+&emsp; &emsp; $query = 'UPDATE '.$table_name.' SET '.$change_string.' WHERE '.$equality_string.';';
+&emsp; &emsp; console_log($query);
+&emsp; &emsp; return safe_query($mysqli, $query);
+}</code></pre></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+	<!-- /LIBRARIES -->
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+									<div class="row">
+										<div class="col-6 col-12-medium">
+											<ul class="alt">
+												<li><a href="mailto:ost@alumni.cmu.edu" style="text-decoration:none;" class="fa fa-envelope"> ost@alumni.cmu.edu</a></li>
+												<li><a class="fa fa-phone"> (814) 360-7508</a></li>
+												<!-- <li><a href="https://github.com/ghoozie" target="_blank" class="fas fa-laptop-code" aria-hidden="true"> GitHub</a></li> -->
+												<li><a href="https://linkedin.com/in/oliver-terrell" target="_blank" class="icon brands fas fa-linkedin" aria-hidden="true"> LinkedIn</a></li>
+											</ul>
+										</div>
+									</div>
+							</section>
+							<section aria-hidden="true">
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://linkedin.com/in/oliver-terrell" target="_blank" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://instagram.com/ghoozie_" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://github.com/ghoozie" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:ost@alumni.cmu.edu" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li><code>&copy; ghoozie</code> All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
