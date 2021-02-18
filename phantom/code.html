@@ -63,7 +63,7 @@
 							<table class="alt">
 								<thead>
 									<tr><th style="vertical-align: middle;"><h3><code>mprint()</code></h3></th>
-									<td colspan="2"><blockquote><sup>This is one of my all-time favorites due to its simplicity and how much it actually helps in debugging.<br>I pronounce it <emph>"imprint"</emph> or simply <emph>"mmm-print" because it is so delicious.</emph></sup></blockquote></td></tr>
+									<td colspan="2" style="text-align: center;"><blockquote><sup>This is one of my all-time favorites due to its simplicity and how much it actually helps in debugging.<br>I pronounce it <emph>"imprint"</emph> or simply <emph>"mmm-print" because it is so delicious.</emph></sup></blockquote></td></tr>
 									<tr>
 										<th>Language</th>
 										<th>Code</th>
@@ -107,17 +107,19 @@ whatever you want to see</code></pre></td>
 							<br><br>
 						<h2>Libraries</h2>	
 		<!-- SQL library -->
-				<table class="alt">
+				<table class="alt" style="margin-bottom:8px;">
 					<thead>
-						<tr><th style="vertical-align: middle;"><h3><code>SQL</code></h3></th>
-						<td><blockquote><sup>Here is a library I wrote in PHP to assist in SQL querying. Allows you to easily use select, insert, and update queries to a database. All queries are run through a sanitization method to protect against SQL injections. $eq_dict is a dictionary of equivalent terms for selecting. $insert_dict is a dictionary that passes the dict value into the database at the column associated with the key.</sup></blockquote></td></tr>
+						<tr><th colspan="1" style="vertical-align: middle;width:10%"><h3><code>SQL</code></h3></th>
+						<td colspan="2" style="text-align: center;"><blockquote><sup>Here is a library I wrote initially in PHP to make SQL querying a breeze. Allows you to easily use select, insert, and update queries to a database. I also wrote this dictionary in Python and it works the same. Select which language you want to view the code in with the buttons on the right.</sup></blockquote></td></tr>
 						<tr>
-							<th colspan="2">Custom SQL Querying Library in PHP</th>
+							<th colspan="2" style="width:50%;vertical-align: bottom;">Custom SQL Querying Library</th>
+							<td colspan="1" style="width:50%;vertical-align: baseline;"><span style="float:right;"><a id="php-sql-button" class="button primary small disabled">PHP</a>&ensp;<a id="python-sql-button" onclick="toggleLangSQL()" class="button small">Python</a></span></td>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td colspan="2"><pre><code><strong>/* Database connection settings */</strong>
+				</table>
+<div id="php-sql-code" style="display:block;"><pre><code><strong>/* PLEASE NOTE: This library refers to associative arrays as 'dictionaries' for ease of understanding. */</strong>
+
+<strong>/* Database connection settings */</strong>
 $host = "db.host.ip.address";
 $user = "database username";
 $pass = "database password";
@@ -171,11 +173,11 @@ function dict_sanitize($mysqli, $dict) {
 &emsp; &emsp; return $dict;
 }
 
-<strong>/* Takes a table name and returns all rows that match $eq_dict */</strong>
-function select_query($mysqli, $table_name, $eq_dict, $desc_field=Null) {
-&emsp; &emsp; # make the query
-&emsp; &emsp; $eq_dict = dict_sanitize($mysqli, $eq_dict);
 
+<strong>/* SELECT QUERY */
+/* Takes a table name and returns all rows that match $eq_dict */</strong>
+function select_query($mysqli, $table_name, $eq_dict, $desc_field=Null) {
+&emsp; &emsp; $eq_dict = dict_sanitize($mysqli, $eq_dict);
 &emsp; &emsp; $equality_string = make_equality_string($eq_dict);
 &emsp; &emsp; $qp1 = "select * from ".$table_name." where ".$equality_string;
 &emsp; &emsp; $qp2 = ";";
@@ -185,10 +187,11 @@ function select_query($mysqli, $table_name, $eq_dict, $desc_field=Null) {
 &emsp; &emsp; }
 
 &emsp; &emsp; $query = $qp1.$qp2;
-
 &emsp; &emsp; $output = safe_query($mysqli, $query);
+
 &emsp; &emsp; console_log($query);
 &emsp; &emsp; console_log("Select Query Executed --> Num rows: ".$output->num_rows);
+
 &emsp; &emsp; return $output;
 }
 
@@ -198,9 +201,7 @@ function select_query($mysqli, $table_name, $eq_dict, $desc_field=Null) {
 &emsp; $eq_dict['id'] = 42;
 
 &emsp; $user42 = select_query($mysqli, 'users', $eq_dict);
-
 &emsp; &emsp; -> returns all rows in 'users' table where column 'id' = 42
-&emsp; &emsp; &emsp; &ensp; and sets equal to $user42 variable
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -209,15 +210,14 @@ function select_query($mysqli, $table_name, $eq_dict, $desc_field=Null) {
 &emsp; $eq_dict['date_archived'] = null;
 
 &emsp; $active_l_five_admins = select_query($mysqli, 'users', $eq_dict);
-
 &emsp; &emsp; -> returns all rows in 'users' table where entries are level 5 admins who have not been archived
-&emsp; &emsp; &emsp; &ensp; and sets equal to $active_l_five_admins variable
 
 ------------------------------------------------------------------------------------------------------------------
-
 */</i></strong>
 
 
+<strong>/* INSERT QUERY */
+/* Inserts into specified table where dict keys are columns and dict values are values */</strong>
 function insert_query($mysqli, $table_name, $insert_dict) {
 &emsp; &emsp; $insert_dict = dict_sanitize($mysqli, $insert_dict);
 
@@ -241,7 +241,25 @@ function insert_query($mysqli, $table_name, $insert_dict) {
 &emsp; &emsp; return safe_query($mysqli, $query);
 }
 
+<strong><i>/* Insert Query Example:
+------------------------------------------------------------------------------------------------------------------
 
+&emsp; $insert_dict['name'] = 'Geralt';
+&emsp; $insert_dict['region'] = 'Rivia';
+&emsp; $insert_dict['occupation'] = 'Witcher';
+&emsp; $insert_dict['bounty'] = '50000';
+&emsp; $insert_dict['associates'] = 'Dandelion';
+
+&emsp; $user42 = insert_query($mysqli, 'characters', $insert_dict);
+&emsp; &emsp; -> inserts into your 'characters' table an entry for Geralt of Rivia where columns = keys
+&emsp; &emsp; &emsp; &ensp; populated with the corresponding values
+
+------------------------------------------------------------------------------------------------------------------
+*/</i></strong>
+
+
+<strong>/* UPDATE QUERY */
+/* Updates an existing row of the database (selected by $eq_dict) with values of $change_dict */</strong>
 function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
 &emsp; &emsp; $eq_dict = dict_sanitize($mysqli, $eq_dict);
 &emsp; &emsp; $change_dict = dict_sanitize($mysqli, $change_dict);
@@ -251,10 +269,24 @@ function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
 &emsp; &emsp; $query = 'UPDATE '.$table_name.' SET '.$change_string.' WHERE '.$equality_string.';';
 &emsp; &emsp; console_log($query);
 &emsp; &emsp; return safe_query($mysqli, $query);
-}</code></pre></td>
-						</tr>
-					</tbody>
-				</table>
+}
+
+<strong><i>/* Update Query Example:
+------------------------------------------------------------------------------------------------------------------
+&emsp; $eq_dict['name'] = 'Geralt'
+&emsp; $eq_dict['region'] = 'Rivia'
+
+&emsp; $change_dict['bounty'] = '75000';
+&emsp; $change_dict['associates'] = 'Dandelion, Yennefer';
+
+&emsp; update_query($mysqli, 'characters', $eq_dict, $change_dict);
+&emsp; &emsp; -> updates your 'characters' table where 'name' = 'Geralt' and 'region' = 'Rivia' to change
+&emsp; &emsp; &emsp; &ensp; bounty to 75,000 coin and add Yennefer to known associates
+
+------------------------------------------------------------------------------------------------------------------
+*/</i></strong></code></pre></div>
+
+<div id="python-sql-code" style="display:none;"><pre><code>Python Code Here!</code></pre></div>
 
 
 	<!-- /LIBRARIES -->
@@ -300,6 +332,32 @@ function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+		<!-- Toggle SQL library language-->
+			<script>
+				function toggleLangSQL() {
+					var phpCode = document.getElementById('php-sql-code');
+					var pythonCode = document.getElementById('python-sql-code');
+					var phpButton = document.getElementById('php-sql-button');
+					var pythonButton = document.getElementById('python-sql-button');
+
+					if (phpCode.style.display == 'block') {
+						phpCode.style.display = 'none';
+						pythonCode.style.display = 'block';
+						phpButton.className = 'button small';
+						phpButton.setAttribute("onclick", 'toggleLangSQL()');
+						pythonButton.className = 'button primary small disabled';
+						pythonButton.removeAttribute("onclick");
+					} else {
+						phpCode.style.display = 'block';
+						pythonCode.style.display = 'none';
+						phpButton.className = 'button primary small disabled';
+						phpButton.removeAttribute("onclick");
+						pythonButton.className = 'button small';
+						pythonButton.setAttribute("onclick", 'toggleLangSQL()');
+					}
+				}
+			</script>
 
 	</body>
 </html>
