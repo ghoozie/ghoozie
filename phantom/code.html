@@ -62,8 +62,10 @@
 			<!-- mprint -->
 							<table class="alt">
 								<thead>
-									<tr><th style="vertical-align: middle;"><h3><code>mprint()</code></h3></th>
-									<td colspan="2" style="text-align: center;"><blockquote><sup>This is one of my all-time favorites due to its simplicity and how much it actually helps in debugging.<br>I pronounce it <emph>"imprint"</emph> or simply <emph>"mmm-print" because it is so delicious.</emph></sup></blockquote></td></tr>
+									<tr style="line-height: 120%;">
+										<th style="vertical-align: middle;"><h3><code>mprint()</code></h3></th>
+										<td colspan="2" style="text-align: center;"><blockquote><sup>This is one of my all-time favorites due to its simplicity and how much it actually helps in debugging.<br>I pronounce it <emph>"imprint"</emph> or simply <emph>"mmm-print" because it is so delicious.</emph></sup></blockquote></td>
+									</tr>
 									<tr>
 										<th>Language</th>
 										<th>Code</th>
@@ -109,17 +111,23 @@ whatever you want to see</code></pre></td>
 		<!-- SQL library -->
 				<table class="alt" style="margin-bottom:8px;">
 					<thead>
-						<tr><th colspan="1" style="vertical-align: middle;width:10%"><h3><code>SQL</code></h3></th>
-						<td colspan="2" style="text-align: center;"><blockquote><sup>Here is a library I wrote initially in PHP to make SQL querying a breeze. Allows you to easily use select, insert, and update queries to a database. I also wrote this dictionary in Python and it works the same. Select which language you want to view the code in with the buttons on the right.</sup></blockquote></td></tr>
+						<tr style="line-height: 120%;">
+						<th colspan="1" style="vertical-align: middle;width:10%"><h3><code>SQL</code></h3></th>
+						<td colspan="2" style="text-align: center;"><blockquote><sup>Here is a library I wrote initially in PHP to make SQL querying a breeze. Allows you to easily use select, insert, and update queries to a database. I also wrote this dictionary in Python and it works the same. Select which language you want to view the code in with the buttons on the right.</sup></blockquote></td>
+						</tr>
 						<tr>
 							<th colspan="2" style="width:50%;vertical-align: bottom;">Custom SQL Querying Library</th>
 							<td colspan="1" style="width:50%;vertical-align: baseline;"><span style="float:right;"><a id="php-sql-button" class="button primary small disabled">PHP</a>&ensp;<a id="python-sql-button" onclick="toggleLangSQL()" class="button small">Python</a></span></td>
 						</tr>
 					</thead>
 				</table>
-<div id="php-sql-code" style="display:block;"><pre><code><strong>/* PLEASE NOTE: This library refers to associative arrays as 'dictionaries' for ease of understanding. */</strong>
+<div id="php-sql-code" style="display:block;"><pre><code><strong>/* PHP
 
-<strong>/* Database connection settings */</strong>
+PLEASE NOTE: This library refers to associative arrays as 'dictionaries' for ease of understanding. */
+
+
+
+/* Database connection settings */</strong>
 $host = "db.host.ip.address";
 $user = "database username";
 $pass = "database password";
