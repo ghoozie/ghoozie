@@ -2372,6 +2372,20 @@ input, select, textarea {
 
 /* Table */
 
+	table.nostyle {
+		border: none, 0, #fff !important;
+		border-bottom: none, 0, #fff !important;
+		border-top: none, 0, #fff !important;
+		background-color: #fff !important;
+	}
+		table.nostyle th tr td tbody thead {
+			border: none, 0, #fff !important;
+			border-bottom: none, 0, #fff !important;
+			border-top: none, 0, #fff !important;
+			background-color: #fff !important;
+		}
+
+
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;

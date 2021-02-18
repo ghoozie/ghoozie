@@ -47,7 +47,7 @@
 							<li><a href="index.html">Home</a></li>
 							<li><a href="aboutme.html">About Me</a></li>
 							<li><a href="code.html">Code Samples</a></li>
-							<li><a href="projects.html">Projects</a></li>
+							<!-- <li><a href="projects.html">Projects</a></li> -->
 							<li><a href="#" onclick='window.open("https://linkedin.com/in/oliver-terrell");return false;'>LinkedIn&reg;</a></li>
 						</ul>
 					</nav>
@@ -57,8 +57,9 @@
 						<div class="inner">
 							<h1>Code Samples</h1>
 							<p>Here are a few general tools and small libraries I made from scratch, and continue to use across projects. If you like what you see feel free to use them yourself!</p>
-		<!-- TOOLS -->
-							<h2>Tools</h2>
+		<!-- TOOLS --><br>
+				<h2><i class="fas fa-hammer"></i> Tools</h2>
+								<hr>
 			<!-- mprint -->
 							<table class="alt">
 								<thead>
@@ -107,13 +108,15 @@ whatever you want to see</code></pre></td>
 	<!-- LIBRARIES -->
 
 							<br><br>
-						<h2>Libraries</h2>	
+						<h2><i class="fas fa-scroll"></i> Libraries</h2>
+						<hr>
 		<!-- SQL library -->
 				<table class="alt" style="margin-bottom:8px;">
 					<thead>
 						<tr style="line-height: 120%;">
 						<th colspan="1" style="vertical-align: middle;width:10%"><h3><code>SQL</code></h3></th>
-						<td colspan="2" style="text-align: center;"><blockquote><sup>Here is a library I wrote initially in PHP to make SQL querying a breeze. Allows you to easily use select, insert, and update queries to a database. I also wrote this dictionary in Python and it works the same. Select which language you want to view the code in with the buttons on the right.</sup></blockquote></td>
+						<!-- i hate this number *gross* -->
+						<td colspan="2" style="text-align: center;"><blockquote><sup>Here is a library I wrote initially in PHP to make SQL querying a breeze. Allows you to easily use select, insert, and update queries to a MySQL database. I also wrote this dictionary in Python and it works the same. Select which language you want to view the code in with the buttons on the right.<br><br>They work a bit different from one another because the projects I extracted them from each had their own necessities, but the basic utility remains the same.</sup></blockquote></td>
 						</tr>
 						<tr>
 							<th colspan="2" style="width:50%;vertical-align: bottom;">Custom SQL Querying Library</th>
@@ -121,6 +124,7 @@ whatever you want to see</code></pre></td>
 						</tr>
 					</thead>
 				</table>
+<!-- PHP SQL CODE-->
 <div id="php-sql-code" style="display:block;"><pre><code><strong>/* PHP
 
 PLEASE NOTE: This library refers to associative arrays as 'dictionaries' for ease of understanding. */
@@ -292,9 +296,152 @@ function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
 &emsp; &emsp; &emsp; &ensp; bounty to 75,000 coin and add Yennefer to known associates
 
 ------------------------------------------------------------------------------------------------------------------
-*/</i></strong></code></pre></div>
+*/
 
-<div id="python-sql-code" style="display:none;"><pre><code>Python Code Here!</code></pre></div>
+
+</i></strong></code></pre></div>
+<!-- /PHP SQL CODE-->
+
+<!-- Python SQL Code-->
+<div id="python-sql-code" style="display:none;"><pre><code><strong># PYTHON
+# Examples of how functions are used visible in PHP rendition of code</strong>
+
+
+<strong># Imports</strong>
+from mysql.connector import connection
+
+<strong># Set to true to print feedback to console</strong>
+show = False;
+
+<strong># For use when multiple queries are happening quickly</strong>
+wait_string = ""
+
+<strong># Database connection settings</strong>
+sql_db = {"host": "db.host.ip.address",
+&emsp; &emsp; &emsp; &ensp; "user": "database username",
+&emsp; &emsp; &emsp; &ensp; "password": "database password",
+&emsp; &emsp; &emsp; &ensp; "schema": "schema name",
+&emsp; &emsp; &emsp; &ensp; }
+
+<strong># This time it's a function we call to allow for one connection at a time when querying a lot</strong>
+def make_connection():
+&emsp; &emsp; global sql_db
+&emsp; &emsp; cnx = connection.MySQLConnection(
+&emsp; &emsp; &emsp; &emsp; host=sql_db["host"],
+&emsp; &emsp; &emsp; &emsp; user=sql_db["user"],
+&emsp; &emsp; &emsp; &emsp; password=sql_db["password"],
+&emsp; &emsp; &emsp; &emsp; database=sql_db["schema"]
+&emsp; &emsp; )
+&emsp; &emsp; return cnx
+
+<strong># single_q() is called in make_query(), which is used by everything</strong>
+def single_q(query, cursor):
+&emsp; &emsp; try:
+&emsp; &emsp; &emsp; &emsp; for _ in cursor.execute(query, multi=True):
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; pass
+&emsp; &emsp; except Exception as e:
+&emsp; &emsp; &emsp; &emsp; if show:
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; print(query, "\nError is:\n", e)
+&emsp; &emsp; result = []
+&emsp; &emsp; try:
+&emsp; &emsp; &emsp; &emsp; result = cursor.fetchall()
+&emsp; &emsp; except:
+&emsp; &emsp; &emsp; &emsp; if show:
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; print("\nThis is an insert query\n")
+
+&emsp; &emsp; return result
+
+
+<strong># Sends a query to the database. Makes new connection (cnx) each time it's called</strong>
+def make_query(query):
+&emsp; &emsp; cnx = make_connection()
+&emsp; &emsp; cursor = cnx.cursor(dictionary=True)
+&emsp; &emsp; result = single_q(query, cursor)
+
+&emsp; &emsp; cnx.commit()
+&emsp; &emsp; cnx.close()
+
+&emsp; &emsp; return result
+
+
+<strong># Makes the string of equivalency statements for select queries
+# Allows for selecting between a range when you pass a tuple (lo, hi) as dict value</strong>
+def eq_string(eq_dict, separator='and'):
+&emsp; &emsp; statements = []
+
+&emsp; &emsp; for field in eq_dict:
+&emsp; &emsp; &emsp; &emsp; value = eq_dict[field]
+&emsp; &emsp; &emsp; &emsp; comp = " {} = {} ".format(field, value)
+
+&emsp; &emsp; &emsp; &emsp; if isinstance(value, tuple):
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; lo = value[0]
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; hi = value[1]
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; complo = " {} <= {} ".format(lo, field)
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; comphi = " {} < {} ".format(field, hi)
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; comp = complo + separator + comphi
+
+&emsp; &emsp; &emsp; &emsp; statements.append(comp)
+
+&emsp; &emsp; eq_string = separator.join(statements)
+
+&emsp; &emsp; return eq_string
+
+
+<strong># SELECT QUERY</strong>
+def select_query(table, eq_dict=None, desc_field=None, wait=False):
+&emsp; &emsp; qp1 = "select * from {} where".format(table) + eq_string(eq_dict)
+&emsp; &emsp; qp2 = ";"
+
+&emsp; &emsp; if desc_field is not None:
+&emsp; &emsp; &emsp; &emsp; qp2 = "ORDER BY {} DESC;".format(desc_field)
+
+&emsp; &emsp; query = qp1 + qp2
+
+&emsp; &emsp; if not wait:
+&emsp; &emsp; &emsp; &emsp; return make_query(query)
+&emsp; &emsp; else:
+&emsp; &emsp; &emsp; &emsp; global wait_string
+&emsp; &emsp; &emsp; &emsp; wait_string = wait_string + query
+
+
+<strong># INSERT QUERY</strong>
+def insert_query(table, insert_dict, wait=False):
+&emsp; &emsp; fields = [f for f in insertdict]
+&emsp; &emsp; values = [str(insert_dict[f]) for f in fields]
+&emsp; &emsp; f_string = ", ".join(fields)
+&emsp; &emsp; v_string = "', '".join(values)
+&emsp; &emsp; query = "insert into {} ({}) VALUES ('{}'); ".format(table, f_string, v_string)
+
+&emsp; &emsp; if not wait:
+&emsp; &emsp; &emsp; &emsp; return make_query(query)
+&emsp; &emsp; else:
+&emsp; &emsp; &emsp; &emsp; global wait_string
+&emsp; &emsp; &emsp; &emsp; wait_string = wait_string + query
+
+
+<strong># helper for update_query()</strong>
+def change_string(change_dict, separator=','):
+&emsp; &emsp; return eq_string(change_dict, separator)
+
+<strong># UPDATE QUERY</strong>
+def update_query(table, eq_dict, change_dict, wait=False):
+&emsp; &emsp; query = "UPDATE {} SET {} WHERE {};".format(table, change_string(change_dict), eq_string(eq_dict))
+
+&emsp; &emsp; if not wait:
+&emsp; &emsp; &emsp; &emsp; return make_query(query)
+&emsp; &emsp; else:
+&emsp; &emsp; &emsp; &emsp; global wait_string
+&emsp; &emsp; &emsp; &emsp; wait_string = wait_string + query
+
+
+<strong># Call this when you do a lot of *query(_, _, _, wait=True) when you want to fire them</strong>
+def send_waiting_queries_raw():
+&emsp; &emsp; global wait_string
+&emsp; &emsp; make_query(wait_string)
+&emsp; &emsp; wait_string = ""
+
+
+</code></pre></div>
 
 
 	<!-- /LIBRARIES -->
