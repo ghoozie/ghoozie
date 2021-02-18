@@ -20,6 +20,18 @@
         function goPhantom() {
             if (! window.location.href.includes('localhost')) {
                 window.location.replace("https://ghoozie.tk/phantom/index.html");
+            } else {
+                var basic = document.createElement("a");
+                    basic.innerHTML = "Basic";
+                    basic.setAttribute("href", "./bootstrap.index.html");
+
+                var phantom = document.createElement("a");
+                    phantom.innerHTML = "Phantom";
+                    phantom.setAttribute("href", "./phantom/index.html");
+
+                var react = document.createElement("a");
+                    react.innerHTML = "Reactor";
+                    react.setAttribute("href", "./react/Rindex.html");
             }
         }
     </script>
