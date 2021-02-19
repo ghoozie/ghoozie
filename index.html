@@ -1,44 +1,34 @@
 <html>
 <head>
 
-
+    
 
 </head>
-<body onload="goPhantom()">
-
-
-
-
-
+<body>
 
     <script>
-        function goPhantom() {
-            if (! window.location.href.includes('localhost')) {
-                window.location.replace("https://ghoozie.tk/phantom/index.php");
-            } else {
-                var basic = document.createElement("a");
-                    basic.innerHTML = "Basic<br><br>";
-                    basic.setAttribute("href", "./bootstrap/index.html");
+        if (! window.location.href.includes('localhost')) {
+            window.location.replace("https://ghoozie.tk/phantom/index.php");
+        } else {
+            var basic = document.createElement("a");
+                basic.innerHTML = "Basic<br><br>";
+                basic.setAttribute("href", "./bootstrap/index.html");
 
-                var phantom = document.createElement("a");
-                    phantom.innerHTML = "Phantom<br><br>";
-                    phantom.setAttribute("href", "./phantom/index.php");
+            var phantom = document.createElement("a");
+                phantom.innerHTML = "Phantom<br><br>";
+                phantom.setAttribute("href", "./phantom/index.php");
 
-                var react = document.createElement("a");
-                    react.innerHTML = "Reactor";
-                    react.setAttribute("href", "./react/Rindex.html");
+            var react = document.createElement("a");
+                react.innerHTML = "Reactor";
+                react.setAttribute("href", "./react/Rindex.html");
 
-                const currentDiv = document.getElementById("plain-jane");
+            const currentDiv = document.getElementById("plain-jane");
 
-                document.body.appendChild(basic);
-                document.body.appendChild(phantom);
-                document.body.appendChild(react);
-            }
+            document.body.appendChild(basic);
+            document.body.appendChild(phantom);
+            document.body.appendChild(react);
         }
     </script>
 
 </body>
-
-
-
 </html>
