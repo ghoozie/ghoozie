@@ -8,7 +8,7 @@
 
     <script>
         if (! window.location.href.includes('localhost')) {
-            window.location.replace("https://ghoozie.tk/phantom/index.php");
+            window.location.assign("https://ghoozie.tk/phantom/index.php");
         } else {
             var basic = document.createElement("a");
                 basic.innerHTML = "Basic<br><br>";
@@ -21,7 +21,7 @@
             var react = document.createElement("a");
                 react.innerHTML = "Reactor";
                 react.setAttribute("href", "./react/Rindex.html");
-                
+
             document.body.appendChild(basic);
             document.body.appendChild(phantom);
             document.body.appendChild(react);
