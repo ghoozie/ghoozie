@@ -7,11 +7,7 @@
 <body onload="goPhantom()">
 
 
-    <!-- <a href="./bootstrap/index.html">Basic</a>
-        &nbsp;&nbsp;&nbsp;
-    <a href="./phantom/index.html">Phantom</a>
-        &nbsp;&nbsp;&nbsp;
-    <a href="./react/Rindex.html">Reactor</a> -->
+    <div id="plain-jane"></div>
 
 
 
@@ -22,16 +18,22 @@
                 window.location.replace("https://ghoozie.tk/phantom/index.html");
             } else {
                 var basic = document.createElement("a");
-                    basic.innerHTML = "Basic";
+                    basic.innerHTML = "Basic<br><br>";
                     basic.setAttribute("href", "./bootstrap.index.html");
 
                 var phantom = document.createElement("a");
-                    phantom.innerHTML = "Phantom";
+                    phantom.innerHTML = "Phantom<br><br>";
                     phantom.setAttribute("href", "./phantom/index.html");
 
                 var react = document.createElement("a");
                     react.innerHTML = "Reactor";
                     react.setAttribute("href", "./react/Rindex.html");
+
+                const currentDiv = document.getElementById("plain-jane");
+
+                document.body.appendChild(basic);
+                document.body.appendChild(phantom);
+                document.body.appendChild(react);
             }
         }
     </script>

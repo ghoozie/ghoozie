@@ -247,8 +247,8 @@ function insert_query($mysqli, $table_name, $insert_dict) {
 &emsp; &emsp; }
 
 &emsp; &emsp; $v_string = rtrim($v_string, ',);');
-
 &emsp; &emsp; $query = "insert into ".$table_name." (".$f_string.") VALUES (".$v_string.");";
+
 &emsp; &emsp; console_log($query);
 &emsp; &emsp; return safe_query($mysqli, $query);
 }
@@ -279,6 +279,7 @@ function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
 &emsp; &emsp; $equality_string = make_equality_string($eq_dict);
 &emsp; &emsp; $change_string = make_equality_string($change_dict, $conj=', ');
 &emsp; &emsp; $query = 'UPDATE '.$table_name.' SET '.$change_string.' WHERE '.$equality_string.';';
+
 &emsp; &emsp; console_log($query);
 &emsp; &emsp; return safe_query($mysqli, $query);
 }
@@ -297,7 +298,6 @@ function update_query($mysqli, $table_name, $eq_dict, $change_dict) {
 
 ------------------------------------------------------------------------------------------------------------------
 */
-
 
 </i></strong></code></pre></div>
 <!-- /PHP SQL CODE-->
