@@ -1,6 +1,10 @@
 
-// Index/About Me
-document.write('<li><a href="index.html">Home</a></li><li><a href="aboutme.html">About Me</a></li>');
+// Index
+document.write('<li><a href="index.html">Home</a></li>');
+
+
+//About Me
+document.write('<li><a href="aboutme.html">About Me</a></li>');
 
 
 // Code Samples
