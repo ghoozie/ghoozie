@@ -12,7 +12,7 @@ document.write('<li><a href="code.html">Code Samples</a></li>');
 
 
 // Projects
-// document.write('<li><a href="projects.html">Projects</a></li>');
+document.write('<li><a href="#">Projects (Coming soon)</a></li>');
 
 
 // LinkedIn
