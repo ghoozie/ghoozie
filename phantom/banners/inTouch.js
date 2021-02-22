@@ -1,10 +1,10 @@
 
 // Email
-document.write('<li><a href="mailto:ost@alumni.cmu.edu" style="text-decoration:none;" class="fa fa-envelope">&nbsp;ost@alumni.cmu.edu</a></li>');
+document.write('<li><a href="mailto:ost@alumni.cmu.edu" style="border-bottom:none;" class="fa fa-envelope">&nbsp;ost@alumni.cmu.edu</a></li>');
 
 
 // Phone
-document.write('<li><a class="fa fa-phone">&nbsp;(814) 360-7508</a></li>');
+document.write('<li><a class="fa fa-phone" style="border-bottom:none;">&nbsp;(814) 360-7508</a></li>');
 
 
 // GitHub
