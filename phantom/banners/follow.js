@@ -12,4 +12,4 @@ document.write('<li><a href="https://github.com/ghoozie" target="_blank" class="
 
 
 // Email
-document.write('<li><a href="mailto:ost@alumni.cmu.edu" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>');
+// document.write('<li><a href="mailto:ost@alumni.cmu.edu" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>');
