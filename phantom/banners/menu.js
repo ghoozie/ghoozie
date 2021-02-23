@@ -16,13 +16,15 @@ document.write('<li><a href="#">Projects (Coming soon)</a></li></ul><hr style="p
 
 
 // Greenstar
-document.write('<ul><li><a href="https://greenstargroup.org" target="_blank">Greenstar Group</a></li>');
+const greenStar = 'window.open("https://greenstargroup.org");return false;';
+document.write('<ul><li><a href="#" onclick='+greenStar+'>Greenstar Group&emsp;<i class="fas fa-external-link-alt"></i></a></li>');
 
 
 // Uncommon Core
-document.write('<li><a href="https://uncommoncore.io" target="_blank">Uncommon Core</a></li>');
+const uncommonCore = 'window.open("https://uncommoncore.io");return false;';
+document.write('<li><a href="#" onclick='+uncommonCore+'>Uncommon Core&emsp;<i class="fas fa-external-link-alt"></i></a></li>');
 
 
 // LinkedIn
 const linkedIn = 'window.open("https://linkedin.com/in/oliver-terrell");return false;';
-document.write('<li><a href="#" onclick='+linkedIn+'>LinkedIn&reg;</a></li></ul>');
+document.write('<li><a href="#" onclick='+linkedIn+'>LinkedIn&reg;&emsp;<i class="fas fa-external-link-alt"></i></a></li></ul>');
