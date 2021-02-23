@@ -15,4 +15,4 @@ document.write('<li><a href="https://github.com/ghoozie" target="_blank" class="
 
 
 // Resume
-document.write('<section><h2>Resumé</h2><a href="../oliver_resume.pdf" target="_blank" class="fa-2x far fa-file-pdf" style="border-bottom:none;">&nbsp;<strong style="font-size:12pt;vertical-align:middle;">View PDF</strong></a></section>');
+document.write('<section><h2>Resumé</h2><a href="../oliver_resume.pdf" target="_blank" class="fa-2x far fa-file-pdf" style="border-bottom:none;">&nbsp;<strong style="font-size:10pt;vertical-align:middle;">View PDF</strong></a></section>');
