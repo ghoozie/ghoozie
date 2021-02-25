@@ -14,5 +14,5 @@ document.write('<li><a href="https://instagram.com/ghoozie_" target="_blank" cla
 document.write('<li><a href="https://github.com/ghoozie" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li></ul><br>');
 
 
-// Resume
-document.write('<section><h2>Resumé</h2><a href="../oliver_resume.pdf" target="_blank" class="fa-2x far fa-file-pdf" style="border-bottom:none;">&nbsp;<strong style="font-size:10pt;vertical-align:middle;">View PDF</strong></a></section>');
+// Resumé
+document.write('<section><h2>Resumé</h2><a href="../oliver_resume.pdf" target="_blank" class="fa-2x far fa-file-pdf" style="border-bottom:none;">&nbsp;<strong style="font-size:12pt;vertical-align:middle;">View PDF</strong></a></section>');
