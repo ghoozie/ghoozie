@@ -347,7 +347,7 @@ show = False
 wait_string = ""
 
 <strong># Database connection settings</strong>
-sql_db = {"host": "db.host.ip.address",
+db = {"host": "db.host.ip.address",
 &emsp; &emsp; &emsp; &ensp; "user": "database username",
 &emsp; &emsp; &emsp; &ensp; "password": "database password",
 &emsp; &emsp; &emsp; &ensp; "schema": "schema name",
@@ -355,12 +355,12 @@ sql_db = {"host": "db.host.ip.address",
 
 <strong># This time it's a function we call to allow for one connection at a time when querying a lot</strong>
 def make_connection():
-&emsp; &emsp; global sql_db
+&emsp; &emsp; global db
 &emsp; &emsp; cnx = connection.MySQLConnection(
-&emsp; &emsp; &emsp; &emsp; host=sql_db["host"],
-&emsp; &emsp; &emsp; &emsp; user=sql_db["user"],
-&emsp; &emsp; &emsp; &emsp; password=sql_db["password"],
-&emsp; &emsp; &emsp; &emsp; database=sql_db["schema"]
+&emsp; &emsp; &emsp; &emsp; host=db["host"],
+&emsp; &emsp; &emsp; &emsp; user=db["user"],
+&emsp; &emsp; &emsp; &emsp; password=db["password"],
+&emsp; &emsp; &emsp; &emsp; database=db["schema"]
 &emsp; &emsp; )
 &emsp; &emsp; return cnx
 
